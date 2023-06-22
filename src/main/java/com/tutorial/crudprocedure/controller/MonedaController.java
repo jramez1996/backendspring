@@ -11,7 +11,6 @@ import com.tutorial.crudprocedure.entity.TipoCambio;
 import com.tutorial.crudprocedure.entity.Usuario;
 import com.tutorial.crudprocedure.service.AuthService;
 import com.tutorial.crudprocedure.service.TipoCambioService;
-import com.tutorial.crudprocedure.repository.CocheRepository;
 import com.tutorial.crudprocedure.repository.MonedaRepository;
 import com.tutorial.crudprocedure.repository.TipoCambioRepository;
 

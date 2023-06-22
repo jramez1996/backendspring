@@ -4,7 +4,6 @@ import com.tutorial.crudprocedure.entity.Coche;
 import com.tutorial.crudprocedure.entity.Moneda;
 import com.tutorial.crudprocedure.entity.Usuario;
 import com.tutorial.crudprocedure.bean.LoginResultDTO;
-import com.tutorial.crudprocedure.repository.CocheRepository;
 import com.tutorial.crudprocedure.repository.MonedaRepository;
 import com.tutorial.crudprocedure.repository.UsuarioRepository;
 

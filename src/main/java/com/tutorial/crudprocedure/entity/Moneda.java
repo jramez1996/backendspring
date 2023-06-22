@@ -23,17 +23,17 @@ public class Moneda {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     @Column(name = "nombre", nullable = false)
     private String nombre ;
     @Column(name = "simbolo", nullable = false)
     private String simbolo ;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

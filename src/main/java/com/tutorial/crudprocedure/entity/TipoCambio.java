@@ -3,8 +3,10 @@ package com.tutorial.crudprocedure.entity;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 @Entity
-@Table(name = "tipocambio")
+@Table(name = "tipocambio2")
 @EntityListeners(AuditingEntityListener.class)
 public class TipoCambio {
 
@@ -15,16 +17,6 @@ public class TipoCambio {
     private String origen;
     
     @Transient
-    private String strmonedadestino;
-    public String getStrMonedaDestino() {
-        return strmonedadestino;
-    }
-
-    public void setStrMonedaDestino(String strmonedadestino) {
-     
-        this.strmonedadestino = strmonedadestino;
-    }
-    @Transient
     private String ultimousuariomodificacion;
     public String getUltimoUsuarioModificacion() {
         return ultimousuariomodificacion;
@@ -34,26 +26,49 @@ public class TipoCambio {
         this.ultimousuariomodificacion = ultimousuariomodificacion;
     }
 
-    @Transient
-    private String usuariocreacion;
-    public String getUsuarioCreacion() {
-        return usuariocreacion;
-    }
 
-    public void setUsuarioCreacion(String usuariocreacion) {
-        this.usuariocreacion = usuariocreacion;
-    }
-    @Column(name = "valor", nullable = false)
+     @Column(name = "valor", nullable = false)
     private Double valor;
 
     @Column(name = "monedaorigen", nullable = false)
-    private int monedaorigen ;
+    private Long monedaorigen ;
  
     @Column(name = "monedadestino", nullable = false)
-    private int monedaDestino ;
+    private Long monedaDestino ;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "monedaorigen", referencedColumnName = "id", insertable = false, updatable = false)
+    private Moneda monedaDataOrigen ;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "monedadestino", referencedColumnName = "id", insertable = false, updatable = false)
+    private Moneda monedaDataDestino ;
+
+    public void setMonedaData(Moneda monedaDataOrigen) {
+        this.monedaDataOrigen = monedaDataOrigen;
+    }
+
+    public Moneda getMonedaDataOrigen() {
+        return monedaDataOrigen;
+    }
+
+    public Moneda getMonedaDataDestino() {
+        return monedaDataDestino;
+    }
+
+    public void setMonedaDataDestino(Moneda monedaDataDestino) {
+        this.monedaDataDestino = monedaDataDestino;
+    }
+    //monedaDataDestino
     @Column(name = "idusuario", nullable = false)
     private int idusuario;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idusuario", referencedColumnName = "id", insertable = false, updatable = false)
+    private Usuario usuarioCreacion ;
+
+
     public int getIdusuario() {
         return idusuario;
     }
@@ -62,6 +77,14 @@ public class TipoCambio {
         this.idusuario = idusuario;
     }
 
+    public Usuario getUsuarioCreacion() {
+        return usuarioCreacion;
+    }
+
+    public void setUsuarioCreacion(Usuario usuarioCreacion) {
+        this.usuarioCreacion = usuarioCreacion;
+    }
+    //usuarioCreacion
     @Column(name = "idusuariomodificacion", nullable = true)
     private int usuariomodificacion;
 
@@ -120,19 +143,19 @@ public class TipoCambio {
     public void setFechamodificacion(Date fechamodificacion) {
         this.fechamodificacion = fechamodificacion;
     }
-    public int getMonedaDestino() {
+    public Long getMonedaDestino() {
         return monedaDestino;
     }
 
-    public void setMonedaDestino(int monedaDestino) {
+    public void setMonedaDestino(Long monedaDestino) {
         this.monedaDestino = monedaDestino;
     }
 
-        public int getMonedaOrigen() {
+        public Long getMonedaOrigen() {
         return monedaorigen;
     }
 
-    public void setMonedaOrigen(int temp) {
+    public void setMonedaOrigen(Long temp) {
         this.monedaorigen = temp;
     }
 

@@ -1,7 +1,5 @@
 package com.tutorial.crudprocedure.service;
 import com.tutorial.crudprocedure.entity.*;
-import com.tutorial.crudprocedure.entity.TipoCambio;
-import com.tutorial.crudprocedure.entity.TipoCambioDto;
 import com.tutorial.crudprocedure.repository.TipoCambioRepository;
 
 import java.util.Date;
@@ -23,7 +21,7 @@ public class TipoCambioService {
         List<Moneda> datoss=monedaRepository.obtenerMonedas();
         List<TipoCambio> entidadExistenteBus= tipoCambioRepository.listado();
         if(entidadExistenteBus.size()>0){
-           
+            /* 
             for(TipoCambio item : entidadExistenteBus) {
                 List<Moneda> filteredUsers = datoss.stream()
                 .filter(mod -> mod.getId() ==item.getMonedaOrigen())
@@ -40,7 +38,7 @@ public class TipoCambioService {
                     item.setStrMonedaDestino(monedaDestinos.get(0).getNombre());
 
                 }
-            }
+            }*/
 
         }
         return entidadExistenteBus;
@@ -49,7 +47,9 @@ public class TipoCambioService {
     
    
     public TipoCambio save(TipoCambio ent){
-        List<TipoCambio> entidadExistenteBus= tipoCambioRepository.buscarTipoCambio(ent.getMonedaOrigen(), ent.getMonedaDestino());
+        //List<TipoCambio> entidadExistenteBus= tipoCambioRepository.buscarTipoCambio(ent.getMonedaOrigen(), ent.getMonedaDestino());
+
+         List<TipoCambio> entidadExistenteBus=null;
         TipoCambio resTipoCambioRes=new TipoCambio();
         resTipoCambioRes.setId(Long.valueOf(1));
         if(entidadExistenteBus==null){

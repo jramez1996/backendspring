@@ -18,7 +18,7 @@ public interface TipoCambioRepository extends JpaRepository<TipoCambio, Long> {
     @Query(value = "{call buscartipocambioexistente(:p0,:p1)}", nativeQuery = true)
     List<TipoCambio> buscarTipoCambio(@Param("p0") int p0,@Param("p1") int p1);
 
-    @Query(value="SELECT t.*,m.* FROM tipocambio as t inner join moneda m on m.id=t.monedaorigen ", nativeQuery = true)
+    @Query(value="SELECT t.*,m.* FROM tipocambio2 as t inner join moneda m on m.id=t.monedaorigen ", nativeQuery = true)
     List<TipoCambio> listado();
 
 }

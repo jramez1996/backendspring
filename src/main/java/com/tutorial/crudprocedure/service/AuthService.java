@@ -5,7 +5,6 @@ import com.tutorial.crudprocedure.entity.AuthRequest;
 import com.tutorial.crudprocedure.entity.Coche;
 import com.tutorial.crudprocedure.entity.Usuario;
 import com.tutorial.crudprocedure.bean.LoginResultDTO;
-import com.tutorial.crudprocedure.repository.CocheRepository;
 import com.tutorial.crudprocedure.repository.UsuarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;

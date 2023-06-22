@@ -12,7 +12,6 @@ import com.tutorial.crudprocedure.entity.TipoCambioDto;
 import com.tutorial.crudprocedure.entity.Usuario;
 import com.tutorial.crudprocedure.service.AuthService;
 import com.tutorial.crudprocedure.service.TipoCambioService;
-import com.tutorial.crudprocedure.repository.CocheRepository;
 import com.tutorial.crudprocedure.repository.MonedaRepository;
 import com.tutorial.crudprocedure.repository.TipoCambioRepository;
 
@@ -70,8 +69,8 @@ public class TipoCambioController {
         tipDat.setValor(tip.getValor());
         tipDat.setFechamodificacion(new Date());
         tipDat.setFecharegistro(new Date());
-        tipDat.setMonedaDestino(tip.getMonedaDestino());
-        tipDat.setMonedaOrigen(tip.getMonedaOrigen());
+        tipDat.setMonedaDestino(Long.valueOf(tip.getMonedaDestino()));
+        tipDat.setMonedaOrigen(Long.valueOf(tip.getMonedaOrigen()));
         TipoCambio res=tipoCambioService.save(tipDat);
         Map resspo=new HashMap<>();
         if(res!=null){
@@ -95,8 +94,8 @@ public class TipoCambioController {
         tipDat.setIdUsuariomodificacion(Integer.parseInt(datUser));
         tipDat.setValor(tip.getValor());
         tipDat.setFechamodificacion(new Date());
-        tipDat.setMonedaDestino(tip.getMonedaDestino());
-        tipDat.setMonedaOrigen(tip.getMonedaOrigen());
+        tipDat.setMonedaDestino(Long.valueOf(tip.getMonedaDestino()));
+        tipDat.setMonedaOrigen(Long.valueOf(tip.getMonedaOrigen()));
         tipoCambioService.actualizarTipoCambio(tipDat);
         Map resspo=new HashMap<>();
         resspo.put("status",true);
